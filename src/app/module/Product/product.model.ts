@@ -1,4 +1,4 @@
-import { Schema } from "mongoose";
+import { Schema, model } from "mongoose";
 import { TDiscount, TProduct, TSpecialOffer } from "./product.interface";
 
 const discountSchema = new Schema<TDiscount>({
@@ -20,7 +20,8 @@ const specificationSchema: Schema = new Schema({
     },
   ],
 });
-const ProductSchema: Schema = new Schema<TProduct>({
+const productSchema: Schema = new Schema<TProduct>({
+  id: { type: String, required: true },
   name: { type: String, required: true },
   description: { type: String, required: true },
   price: { type: Number, required: true },
@@ -28,9 +29,14 @@ const ProductSchema: Schema = new Schema<TProduct>({
   category: { type: String, required: true },
   subcategory: { type: String, required: true },
   specifications: { type: [specificationSchema], required: true },
-  stock: { type: Number, required: true, default: 0 },
+  stock: { type: Number, required: true },
   images: { type: [String], required: true },
   rating: { type: Number, required: true, default: 0 },
+  status: {
+    type: String,
+    enum: ["OUT-OF-STOCK", "IN-STOCK"],
+    default: "IN-STOCK",
+  },
   reviews: [
     {
       user: { type: String, required: true },
@@ -42,3 +48,5 @@ const ProductSchema: Schema = new Schema<TProduct>({
   discount: { type: discountSchema, required: true },
   specialOffer: { type: specialOfferSchema, required: true },
 });
+
+export const Product = model<TProduct>('Product',productSchema)

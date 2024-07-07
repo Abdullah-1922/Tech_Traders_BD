@@ -8,15 +8,16 @@ export type TSpecialOffer = {
   offerEvent: string;
   offerDiscountAmount: number;
 };
-export  type TSpecification= {
-    category: string;
-    details: {
-      label: string;
-      value: string;
-    }[];
-  }
+export type TSpecification = {
+  category: string;
+  details: {
+    label: string;
+    value: string;
+  }[];
+};
 
 export type TProduct = {
+    id:string
   name: string;
   description: string;
   price: number;
@@ -25,10 +26,11 @@ export type TProduct = {
   specialOffer: TSpecialOffer;
   category: string;
   subcategory: string;
-  specifications: TSpecification[]
+  specifications: TSpecification[];
   stock: number;
   images: string[];
   rating: number;
+  status: "IN-STOCK" | "OUT-OF-STOCK";
   reviews: {
     user: string;
     rating: number;
