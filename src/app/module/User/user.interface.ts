@@ -13,7 +13,7 @@ export interface TUser {
 
   passwordChangedAt?: Date;
   role: "admin" | "user" | "employee";
-  profileImage:string
+  profileImage: string;
   isDeleted: boolean;
 }
 
