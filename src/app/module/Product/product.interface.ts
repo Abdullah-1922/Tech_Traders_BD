@@ -15,17 +15,23 @@ export type TSpecification = {
     value: string;
   }[];
 };
+export type TKeyFeature = {
+  label: string;
+  value: string;
+}[];
 
 export type TProduct = {
-    id:string
+  id: string;
   name: string;
   description: string;
+  regularPrice:number;
   price: number;
   brand: string;
   discount: TDiscount;
   specialOffer: TSpecialOffer;
   category: string;
   subcategory: string;
+  keyFeature:TKeyFeature;
   specifications: TSpecification[];
   stock: number;
   images: string[];

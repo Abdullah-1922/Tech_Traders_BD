@@ -20,7 +20,6 @@ app.use(cors({ origin: ["http://localhost:5173"], credentials: true }));
 // application routes
 app.use("/api/v1", router); // /api/v1 will prefix all the route. This is the connection with the index.ts file inside the routes folder.
 
-
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello from Tech_Traders_BD");
 });

@@ -1,33 +1,44 @@
 import { Schema, model } from "mongoose";
 import { TDiscount, TProduct, TSpecialOffer } from "./product.interface";
 
-const discountSchema = new Schema<TDiscount>({
-  isDiscount: { type: Boolean, required: true, default: false },
-  discountAmount: { type: Number, default: 0 },
-});
+const discountSchema = new Schema<TDiscount>(
+  {
+    isDiscount: { type: Boolean, required: true, default: false },
+    discountAmount: { type: Number, default: 0 },
+  },
+  { versionKey: false, _id: false }
+);
 
-const specialOfferSchema = new Schema<TSpecialOffer>({
-  isOffered: { type: Boolean, required: true, default: false },
-  offerEvent: { type: String },
-  offerDiscountAmount: { type: Number, required: true, default: 0 },
-});
-const specificationSchema: Schema = new Schema({
-  category: { type: String, required: true },
-  details: [
-    {
-      label: { type: String, required: true },
-      value: { type: String, required: true },
-    },
-  ],
-});
+const specialOfferSchema = new Schema<TSpecialOffer>(
+  {
+    isOffered: { type: Boolean, required: true, default: false },
+    offerEvent: { type: String },
+    offerDiscountAmount: { type: Number, required: true, default: 0 },
+  },
+  { versionKey: false, _id: false }
+);
+const specificationSchema: Schema = new Schema(
+  {
+    category: { type: String, required: true },
+    details: [
+      {
+        label: { type: String, required: true },
+        value: { type: String, required: true },
+      },
+    ],
+  },
+  { versionKey: false, _id: false }
+);
 const productSchema: Schema = new Schema<TProduct>({
   id: { type: String, required: true },
   name: { type: String, required: true },
   description: { type: String, required: true },
+  regularPrice:{type:Number,required:true },
   price: { type: Number, required: true },
   brand: { type: String, required: true },
   category: { type: String, required: true },
   subcategory: { type: String, required: true },
+  keyFeature: { type: [{ label: String,value:String }],required:true },
   specifications: { type: [specificationSchema], required: true },
   stock: { type: Number, required: true },
   images: { type: [String], required: true },
@@ -39,7 +50,7 @@ const productSchema: Schema = new Schema<TProduct>({
   },
   reviews: [
     {
-      user: { type: String, required: true },
+      user: { type: Schema.Types.ObjectId, ref: "User", required: true },
       rating: { type: Number, required: true },
       comment: { type: String, required: true },
       date: { type: Date, required: true },
@@ -49,4 +60,4 @@ const productSchema: Schema = new Schema<TProduct>({
   specialOffer: { type: specialOfferSchema, required: true },
 });
 
-export const Product = model<TProduct>('Product',productSchema)
+export const Product = model<TProduct>("Product", productSchema);
