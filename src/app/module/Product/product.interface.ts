@@ -1,3 +1,5 @@
+import { TPortable, TPurpose, TValidFeatures } from "./product.constant";
+
 export type TDiscount = {
   isDiscount: boolean;
   discountAmount?: number;
@@ -19,19 +21,27 @@ export type TKeyFeature = {
   label: string;
   value: string;
 }[];
+export type TQueryFeature = {
+  price: number;
+  primaryPurpose: TPurpose[];
+  displaySize: number;
+  portability: TPortable;
+  features: TValidFeatures[];
+};
 
 export type TProduct = {
   id: string;
   name: string;
   description: string;
-  regularPrice:number;
+  regularPrice: number;
   price: number;
   brand: string;
   discount: TDiscount;
   specialOffer: TSpecialOffer;
   category: string;
   subcategory: string;
-  keyFeature:TKeyFeature;
+  keyFeature: TKeyFeature;
+  queryFeature?: TKeyFeature;
   specifications: TSpecification[];
   stock: number;
   images: string[];
@@ -43,4 +53,5 @@ export type TProduct = {
     comment: string;
     date: Date;
   }[];
+  isDeleted:boolean
 };
