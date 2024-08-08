@@ -16,16 +16,48 @@ export type TPortable = {
 };
 
 export const validFeatures = [
-    { id: 1, title: "Backlit Keyboard", description: "For gaming atmosphere and aesthetics" },
-    { id: 2, title: "Fingerprint Sensor", description: "For quick and secure access" },
-    { id: 3, title: "Touchscreen", description: "For intuitive screen interaction" },
-    { id: 4, title: "360° Convertible", description: "Laptop turns into a tablet" },
-    { id: 5, title: "Detachable", description: "Removable screen for ultimate portability" },
-    { id: 6, title: "Dual Display", description: "Two screens for multitasking" },
-    { id: 7, title: "Metal Build", description: "Durable and high-quality laptop" },
-    { id: 8, title: "Privacy Shutter Webcam", description: "For enhanced privacy" },
-    { id: 9, title: "Original Operating System", description: "Genuine and reliable software" },
-  ];
+  {
+    id: 1,
+    title: "Backlit Keyboard",
+    description: "For gaming atmosphere and aesthetics",
+  },
+  {
+    id: 2,
+    title: "Fingerprint Sensor",
+    description: "For quick and secure access",
+  },
+  {
+    id: 3,
+    title: "Touchscreen",
+    description: "For intuitive screen interaction",
+  },
+  {
+    id: 4,
+    title: "360° Convertible",
+    description: "Laptop turns into a tablet",
+  },
+  {
+    id: 5,
+    title: "Detachable",
+    description: "Removable screen for ultimate portability",
+  },
+  { id: 6, title: "Dual Display", description: "Two screens for multitasking" },
+  {
+    id: 7,
+    title: "Metal Build",
+    description: "Durable and high-quality laptop",
+  },
+  {
+    id: 8,
+    title: "Privacy Shutter Webcam",
+    description: "For enhanced privacy",
+  },
+  {
+    id: 9,
+    title: "Original Operating System",
+    description: "Genuine and reliable software",
+  },
+];
 
 export const purposes: TPurpose[] = [
   {

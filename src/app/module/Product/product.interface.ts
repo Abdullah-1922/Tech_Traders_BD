@@ -7,7 +7,8 @@ export type TDiscount = {
 
 export type TSpecialOffer = {
   isOffered: boolean;
-  offerEvent: string;
+  
+  offerInfo?: string ;
   offerDiscountAmount: number;
 };
 export type TSpecification = {
@@ -53,5 +54,5 @@ export type TProduct = {
     comment: string;
     date: Date;
   }[];
-  isDeleted:boolean
+  isDeleted: boolean;
 };

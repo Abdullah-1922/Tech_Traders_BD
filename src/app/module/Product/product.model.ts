@@ -5,7 +5,6 @@ import {
   TQueryFeature,
   TSpecialOffer,
 } from "./product.interface";
-import { boolean, number } from "zod";
 
 const discountSchema = new Schema<TDiscount>(
   {
@@ -51,7 +50,7 @@ const queryFeatureSchema = new Schema<TQueryFeature>(
 const specialOfferSchema = new Schema<TSpecialOffer>(
   {
     isOffered: { type: Boolean, required: true, default: false },
-    offerEvent: { type: String },
+    offerInfo: { type: Schema.Types.ObjectId, ref: "Offer", required: true },
     offerDiscountAmount: { type: Number, required: true, default: 0 },
   },
   { versionKey: false, _id: false }
@@ -80,7 +79,7 @@ const productSchema: Schema = new Schema<TProduct>({
   keyFeature: { type: [{ label: String, value: String }], required: true }, //
   queryFeature: { type: queryFeatureSchema }, //
   specifications: { type: [specificationSchema], required: true }, //
-  stock: { type: Number, required: true }, //
+  stock: { type: Number, required: true, default: 0 }, //
   images: { type: [String], required: true }, //
   rating: { type: Number, required: true, default: 0 },
   status: {
@@ -103,12 +102,6 @@ const productSchema: Schema = new Schema<TProduct>({
   },
   specialOffer: {
     type: specialOfferSchema,
-    required: true,
-    default: {
-      isOffered: false,
-      offerEvent: "",
-      offerDiscountAmount: 0,
-    },
   },
   isDeleted: { type: Boolean, required: true, default: false },
 });

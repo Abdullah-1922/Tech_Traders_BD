@@ -23,7 +23,7 @@ export interface UserModel extends Model<TUser> {
   //instance methods for checking if passwords are matched
   isPasswordMatched(
     plainTextPassword: string,
-    hashedPassword: string
+    hashedPassword: string,
   ): Promise<boolean>;
 }
 
